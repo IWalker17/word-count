@@ -1,0 +1,26 @@
+{
+  "name": "word-count",
+  "version": "1.0.0",
+  "description": "Count the top 100 words of a .txt file (excluding stop words)",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "npm run open",
+    "open": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lonewalker72/word-count.git"
+  },
+  "author": "lonewalker72",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lonewalker72/word-count/issues"
+  },
+  "homepage": "https://github.com/Lonewalker72/word-count#readme",
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "http-server": "^0.11.1",
+    "mocha": "^4.1.0"
+  }
+}
