@@ -39,8 +39,39 @@ function wordFreq(arr) {
 function sortKeys(arr) {
   let sorted = arr.sort(descSort);
   // console.log('sorted', sorted);
+  renderIf(sorted);
 }
 
 function descSort(a, b) {
   let desc = wordCounts[b] - wordCounts[a];
+  return desc;
+}
+
+function renderIf(arr) {
+
+  if(arr.length > 100) {
+    for(let i = 0; i < 100; i++) {
+      let key = arr[i];
+      let ol = document.createElement('OL');
+      ol.setAttribute('id', 'ole');
+      document.getElementById('list').appendChild(ol);
+
+      let li = document.createElement('LI');
+      let stuff = document.createTextNode(key + ': ' + wordCounts[key]);
+      li.appendChild(stuff);
+      document.getElementById('ole').appendChild(li);
+    }
+  } else {
+    for(let i = 0; i < arr.length; i++) {
+      let key = arr[i];
+      let ol = document.createElement('OL');
+      ol.setAttribute('id', 'ole');
+      document.getElementById('list').appendChild(ol);
+
+      let li = document.createElement('LI');
+      let stuff = document.createTextNode(key + ': ' + wordCounts[key]);
+      li.appendChild(stuff);
+      document.getElementById('ole').appendChild(li);
+    }
+  }
 }
