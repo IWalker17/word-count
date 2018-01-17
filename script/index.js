@@ -2,25 +2,28 @@ const stopWords = ['a', 'about', 'above', 'across', 'after', 'again', 'against',
 
 let wordCounts = {};
 
-function loadFile (e) {
+let handleChange = (e) => {
   let input = e.target;
+  loadFile(input);
+};
+
+let loadFile = (input) => {
   let reader = new FileReader();
   reader.onload = function() {
-    // console.log(reader.result);
     let str = reader.result;
     mkArr(str);
   };
   reader.readAsText(input.files[0]);
-}
+};
 
-function mkArr(str) {
+let mkArr = (str) => {
   let wordsStr = str.replace('\n\n', ' ');
   let wordsArr = wordsStr.split(/\W+/);
-  // console.log(wordsArr);
   wordFreq(wordsArr);
-}
+};
 
-function wordFreq(arr) {
+let wordFreq = (arr) => {
+  wordCounts = {};
   let keys = [];
   for(let i = 0; i < arr.length; i++) {
     let word = arr[i].toLowerCase();
@@ -34,44 +37,40 @@ function wordFreq(arr) {
     }
   }
   sortKeys(keys);
-}
+};
 
-function sortKeys(arr) {
+let sortKeys = (arr) => {
   let sorted = arr.sort(descSort);
-  // console.log('sorted', sorted);
+  console.log(sorted);
   renderIf(sorted);
-}
+};
 
-function descSort(a, b) {
+let descSort = (a, b) => {
   let desc = wordCounts[b] - wordCounts[a];
   return desc;
-}
+};
 
-function renderIf(arr) {
-
-  if(arr.length > 100) {
-    for(let i = 0; i < 100; i++) {
-      let key = arr[i];
-      let ol = document.createElement('OL');
-      ol.setAttribute('id', 'ole');
-      document.getElementById('list').appendChild(ol);
-
-      let li = document.createElement('LI');
-      let stuff = document.createTextNode(key + ': ' + wordCounts[key]);
-      li.appendChild(stuff);
-      document.getElementById('ole').appendChild(li);
-    }
-  } else {
-    for(let i = 0; i < arr.length; i++) {
-      let key = arr[i];
-      let ol = document.createElement('OL');
-      ol.setAttribute('id', 'ole');
-      document.getElementById('list').appendChild(ol);
-
-      let li = document.createElement('LI');
-      let stuff = document.createTextNode(key + ': ' + wordCounts[key]);
-      li.appendChild(stuff);
-      document.getElementById('ole').appendChild(li);
-    }
+let clear = () => {
+  let ele = document.getElementById('order');
+  if(ele) {
+    ele.remove();
   }
-}
+};
+
+let renderIf = (arr) => {
+  clear();
+  let ol = document.createElement('OL');
+  ol.setAttribute('id', 'order');
+  document.getElementById('list').appendChild(ol);
+
+  let n;
+  arr.length < 100 ? n = arr.length : n = 100;
+  for(let i = 0; i < n; i++) {
+    let key = arr[i];
+
+    let li = document.createElement('LI');
+    let unique = document.createTextNode(key + ': ' + wordCounts[key]);
+    li.appendChild(unique);
+    document.getElementById('order').appendChild(li);
+  }
+};
