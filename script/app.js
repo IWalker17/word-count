@@ -25,4 +25,19 @@ module.exports = {
     }
     return wordCounts;
   },
+
+  noDups(arr) {
+    let keys = [];
+    let c = 0;
+    while(c < arr.length) {
+      if(keys.indexOf(arr[c]) === -1) {
+        keys.push(arr[c]);
+        c++;
+      } else {
+        c++;
+      }
+    }
+    return keys;
+  },
+
 };
