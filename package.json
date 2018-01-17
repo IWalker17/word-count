@@ -2,7 +2,7 @@
   "name": "word-count",
   "version": "1.0.0",
   "description": "Count the top 100 words of a .txt file (excluding stop words)",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha",
     "start": "npm run open",
