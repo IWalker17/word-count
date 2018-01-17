@@ -14,4 +14,15 @@ module.exports = {
     return arr;
   },
 
+  wordFreq(arr) {
+    let wordCounts = {};
+    for(let i = 0; i < arr.length; i++) {
+      if(!wordCounts[arr[i]]) {
+        wordCounts[arr[i]] = 1;
+      } else {
+        wordCounts[arr[i]] = wordCounts[arr[i]] + 1;
+      }
+    }
+    return wordCounts;
+  },
 };
