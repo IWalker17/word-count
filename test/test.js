@@ -62,7 +62,7 @@ describe('app', function() {
   describe('#descSort', function() {
     it('Should return an array that is sorted in descending order', function() {
       let arr = [12, 432, 23, 54, 25, 1, 8];
-      expect(app.descSort(arr).to.equal([432, 54, 25, 23, 12, 8, 1]));
+      assert.equal(app.descSort(arr).indexOf(432), 0);
     });
   });
 });
