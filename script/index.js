@@ -41,7 +41,6 @@ let wordFreq = (arr) => {
 
 let sortKeys = (arr) => {
   let sorted = arr.sort(descSort);
-  console.log(sorted);
   renderIf(sorted);
 };
 
