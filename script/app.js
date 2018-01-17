@@ -40,4 +40,10 @@ module.exports = {
     return keys;
   },
 
+  descSort(arr) {
+    let x = arr.sort(function(a, b){
+      return b - a;
+    });
+    return x;
+  },
 };
