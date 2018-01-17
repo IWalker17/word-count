@@ -1,0 +1,24 @@
+#list {
+  display: inline-block;
+}
+
+#order li {
+  border: 1px solid black;
+  box-shadow: 3px 3px 15px 3px #888;
+}
+
+#content {
+  display: inline-block;
+  border: 1px solid black;
+  box-shadow: 3px 3px 15px 3px #888;
+  padding: 2em;
+  margin-bottom: 2em;
+}
+
+#content h4 {
+  text-align: center;
+}
+
+#content p {
+  text-indent: 30px;
+}
