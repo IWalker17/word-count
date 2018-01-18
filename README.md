@@ -20,3 +20,25 @@ Please share your code, including a README, by pushing to your GitHub account an
 2. Implementation of functionality.
 3. Refactoring.
 4. Styling.
+
+---
+
+### How To Use:
+* Clone the repository via the `Clone or Download` button and the following terminal command:
+
+```node
+git clone https://github.com/Lonewalker72/word-count.git
+```
+* Once the repository is cloned use the following command to install dependencies and modules:
+
+```node
+npm i
+```
+* Use the following script in your terminal to start up your local server and proceed to http://localhost:8080 or follow the link in your terminal following this command:
+
+```node
+npm start
+```
+
+### Test
+Testing was done with Mocha, Chai, and Sinon. Sinon was used in an attempt to simulate an event. TDD was used to get the core functionality/concepts down although alteration did occur as the project progress. With only having tested with jest this was an adventure for me and look forward to continue to develop my skills in Mocha, Chai, etc. 
