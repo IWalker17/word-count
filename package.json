@@ -21,7 +21,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.15.0",
-    "http-server": "^0.11.1",
+    "http-server": "^0.12.3",
     "mocha": "^6.1.4"
   }
 }
