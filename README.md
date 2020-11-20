@@ -16,10 +16,10 @@ Please share your code, including a README, by pushing to your GitHub account an
 * As the user, I only want a list of no more than the top 100 most frequently used words.
 
 ### TODO's:
-1. Test Driven Development.
-2. Implementation of functionality.
-3. Refactoring.
-4. Styling.
+- [x] Test Driven Development.
+- [x] Implementation of functionality.
+- [x] Refactoring.
+- [x] Styling.
 
 ---
 
