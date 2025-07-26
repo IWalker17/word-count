@@ -7,6 +7,7 @@
     "test": "mocha",
     "start": "node server.js"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lonewalker72/word-count.git"
