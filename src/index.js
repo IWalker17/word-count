@@ -3,73 +3,79 @@ const stopWords = ['a', 'about', 'above', 'across', 'after', 'again', 'against',
 let wordCounts = {};
 
 let handleChange = (e) => {
-  let input = e.target;
-  loadFile(input);
+    let input = e.target;
+    loadFile(input);
 };
 
 let loadFile = (input) => {
-  let reader = new FileReader();
-  reader.onload = function() {
-    let str = reader.result;
-    mkArr(str);
-  };
-  reader.readAsText(input.files[0]);
+    let reader = new FileReader();
+    reader.onload = function() {
+        let str = reader.result;
+        mkArr(str);
+    };
+    reader.readAsText(input.files[0]);
 };
 
 let mkArr = (str) => {
-  let wordsStr = str.replace('\n\n', ' ');
-  let wordsArr = wordsStr.split(/\W+/);
-  wordFreq(wordsArr);
+    let wordsStr = str.replace('\n\n', ' ');
+    let wordsArr = wordsStr.split(/\W+/);
+    wordFreq(wordsArr);
 };
 
 let wordFreq = (arr) => {
-  wordCounts = {};
-  let keys = [];
-  for(let i = 0; i < arr.length; i++) {
-    let word = arr[i].toLowerCase();
-    if(!/\d+/.test(word) && stopWords.indexOf(word) === -1 && word !== '') {
-      if(!wordCounts[word]) {
-        wordCounts[word] = 1;
-        keys.push(word);
-      } else {
-        wordCounts[word] = wordCounts[word] + 1;
-      }
+    wordCounts = {};
+    let keys = [];
+    for(let i = 0; i < arr.length; i++) {
+        let word = arr[i].toLowerCase();
+        if(!/\d+/.test(word) && stopWords.indexOf(word) === -1 && word !== '') {
+            if(!wordCounts[word]) {
+                wordCounts[word] = 1;
+                keys.push(word);
+            } else {
+                wordCounts[word] = wordCounts[word] + 1;
+            }
+        }
     }
-  }
-  sortKeys(keys);
+    sortKeys(keys);
 };
 
 let sortKeys = (arr) => {
-  let sorted = arr.sort(descSort);
-  renderIf(sorted);
+    let sorted = arr.sort(descSort);
+    renderIf(sorted);
 };
 
 let descSort = (a, b) => {
-  let desc = wordCounts[b] - wordCounts[a];
-  return desc;
+    let desc = wordCounts[b] - wordCounts[a];
+    return desc;
 };
 
 let clear = () => {
-  let ele = document.getElementById('order');
-  if(ele) {
-    ele.remove();
-  }
+    let ele = document.getElementById('order');
+    if(ele) {
+        ele.remove();
+    }
 };
 
 let renderIf = (arr) => {
-  clear();
-  let ol = document.createElement('OL');
-  ol.setAttribute('id', 'order');
-  document.getElementById('list').appendChild(ol);
+    clear();
+    let ol = document.createElement('OL');
+    ol.setAttribute('id', 'order');
+    document.getElementById('list').appendChild(ol);
 
-  let n;
-  arr.length < 100 ? n = arr.length : n = 100;
-  for(let i = 0; i < n; i++) {
-    let key = arr[i];
+    let n;
+	arr.length < 100 ? n = arr.length : n = 100;
+	for(let i = 0; i < n; i++) {
+	    let key = arr[i];
 
-    let li = document.createElement('LI');
-    let unique = document.createTextNode(key + ': ' + wordCounts[key]);
-    li.appendChild(unique);
-    document.getElementById('order').appendChild(li);
-  }
+	    let li = document.createElement('LI');
+	    let unique = document.createTextNode(key + ': ' + wordCounts[key]);
+	    li.appendChild(unique);
+	    document.getElementById('order').appendChild(li);
+	}
 };
+
+document.getElementById('fileInput').addEventListener('change', (event) => {
+    console.log(event.target.files[0]);
+    handleChange(event);
+});
+
